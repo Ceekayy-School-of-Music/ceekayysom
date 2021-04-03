@@ -11,6 +11,7 @@ require_once dirname( __FILE__ ) . '/scripts-manager.php';
 require_once dirname( __FILE__ ) . '/widgets-manager.php';
 require_once dirname( __FILE__ ) . '/ajax-manager.php';
 require_once dirname( __FILE__ ) . '/controls-manager.php';
+require_once dirname( __FILE__ ) . '/token-manager.php';
 require_once dirname( __FILE__ ) . '/rest-api.php';
 require_once dirname( __FILE__ ) . '/version-control.php';
 require_once dirname( __FILE__ ) . '/admin-page.php';

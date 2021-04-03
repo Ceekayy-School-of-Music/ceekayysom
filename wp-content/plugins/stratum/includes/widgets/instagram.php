@@ -149,7 +149,10 @@ class Instagram extends Stratum_Widget_Base {
 				'min'   => 1,
 				'max'   => 6,
 				'step'  => 1,
-				'default' => 3
+				'default' => 3,
+				'selectors' => [
+					'{{WRAPPER}} .stratum-instagram .stratum-instagram__wrapper' => '--columns: {{VALUE}}',
+				],
 			]
 		);
 

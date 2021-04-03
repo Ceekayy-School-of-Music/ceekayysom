@@ -31,6 +31,11 @@ final class Stratum {
 	private $controls_manager;
 
 	/**
+	 * @var Token_Manager
+	 */
+	private $token_manager;
+
+	/**
 	 * @var Ajax_Manager
 	 */
 	private $ajax_manager;
@@ -55,6 +60,7 @@ final class Stratum {
 		$this->scripts_manager  = new \Stratum\Managers\Scripts_Manager();
 		$this->widgets_manager  = new \Stratum\Managers\Widgets_Manager();
 		$this->controls_manager = new \Stratum\Managers\Controls_Manager();
+		$this->token_manager    = new \Stratum\Managers\Token_Manager();
 		$this->ajax_manager 	= new \Stratum\Managers\Ajax_Manager();
 		$this->version_control  = new Version_Control();
 		$this->rest_api         = new Rest_API();
@@ -80,6 +86,13 @@ final class Stratum {
      */
     public function get_controls_manager() {
         return $this->controls_manager;
+	}
+
+    /**
+     * @return Token_Manager
+     */
+    public function get_token_manager() {
+        return $this->token_manager;
 	}
 
     /**

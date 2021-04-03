@@ -1,9 +1,9 @@
 === Stratum - Elementor Widgets ===
 Contributors: MotoPress
 Donate link: https://motopress.com/
-Tags: elementor, elementor addons, elementor plugins, elementor widgets, elementor extras, elementor essential addons, page builder, accordion, google map, slider, tabs, instagram, timeline, lottie, countdown
+Tags: elementor, elementor addons, elementor plugins, elementor widgets, elementor extras, elementor essential addons, page builder, accordion, google map, slider, tabs, instagram, timeline, lottie, countdown, table
 Requires at least: 5.0
-Tested up to: 5.6
+Tested up to: 5.7
 Requires PHP: 5.6
 Stable tag: trunk
 License: GPLv2 or later
@@ -56,6 +56,8 @@ Take a look at the entire collection of Elementor essential addons by Stratum:
 1. [Horizontal Timeline](https://stratum.getmotopress.com/horizontal-timeline/) - show events in chronological order using a horizontal timeline framework.
 1. [Lottie Animations](https://stratum.getmotopress.com/lottie-animations/) - add high-quality animations to your WordPress site using the Lottie Animations library and customize animations further.
 1. [Countdown](https://stratum.getmotopress.com/countdown/) - create a circle or box-styled animated countdown timer and set the real-time countdown up to seconds.
+1. [Table](https://stratum.getmotopress.com/table/) - the table widget will allow you to create responsive data tables, style rows and columns.
+1. [Content Switcher](https://stratum.getmotopress.com/content-switcher/) - create tabs or a toggle to structure your content, pricing plans or any other categorized data.
 
 It makes no difference what kind of a business niche you are involved in, nor does it matter whether you develop an Elementor website for yourself or do it as a service. Stratum made both for beginners and pro users to get their best results while styling up content elements for their Elementor websites.
 
@@ -107,6 +109,12 @@ Stratum plugin is distributed under the terms of the GNU GPL.
 3. Find Stratum widgets in Elementor.
 
 == Changelog ==
+
+= 1.3.7, Apr 1 2021 =
+* Added Table widget.
+* Added Content Switcher widget.
+* Added the ability to automatically refresh Instagram access token.
+* Minor bugfixes and improvements.
 
 = 1.3.6, Feb 17 2021 =
 * Minor bugfixes and improvements.

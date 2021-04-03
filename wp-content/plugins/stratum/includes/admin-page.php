@@ -75,7 +75,7 @@ class Admin_Page {
 	{
 		global $pagenow;
 
-        if ($pagenow == 'admin.php' && isset($_GET['page']) && $_GET['page'] == 'stratum-settings' && isset($_GET['instagram-token'])) {
+        if ($pagenow == 'admin.php' && isset($_GET['instagram-token'])) {
             $stratum_api = get_option( 'stratum_api', [] );
             $stratum_api['instagram_access_token'] = sanitize_text_field($_GET['instagram-token']);
             update_option('stratum_api', $stratum_api);
@@ -155,6 +155,19 @@ class Admin_Page {
 			<div class="stratum-about-list">
 
 <!-- start markdowntohtml.com -->
+
+<p>= 1.3.7, Apr 1 2021 =</p>
+<ul>
+<li>Added Table widget.</li>
+<li>Added Content Switcher widget.</li>
+<li>Added the ability to automatically refresh Instagram access token.</li>
+<li>Minor bugfixes and improvements.</li>
+</ul>
+
+<p>= 1.3.6, Feb 17 2021 =</p>
+<ul>
+<li>Minor bugfixes and improvements.</li>
+</ul>
 
 <p>= 1.3.5, Dec 23 2020 =</p>
 <ul>
@@ -301,6 +314,22 @@ class Admin_Page {
                     'label'     => esc_html__( 'Price Table', 'stratum' ),
                     'desc'      => esc_html__( 'Pricing and comparison tables.', 'stratum' ),
                     'icon'      => 'stratum-icon-price-table',
+                    'type'      => 'toggle',
+                    'default'   => 'on'
+                ),
+                array(
+                    'name'      => 'table',
+                    'label'     => esc_html__( 'Table', 'stratum' ),
+                    'desc'      => esc_html__( 'Build responsive tables and customize their content and styling.', 'stratum' ),
+                    'icon'      => 'eicon-table',
+                    'type'      => 'toggle',
+                    'default'   => 'on'
+                ),
+                array(
+                    'name'      => 'content-switcher',
+                    'label'     => esc_html__( 'Content Switcher', 'stratum' ),
+                    'desc'      => esc_html__( 'Add a toggle or structure your content into switchable tabs - perfect for pricing plans and data organization.', 'stratum' ),
+                    'icon'      => 'eicon-dual-button',
                     'type'      => 'toggle',
                     'default'   => 'on'
                 ),
@@ -472,7 +501,7 @@ class Admin_Page {
 					'desc_link'  => esc_url(
 						'https://api.instagram.com/oauth/authorize?client_id=910186402812397&redirect_uri=' .
 						'https://api.getmotopress.com/get_instagram_token.php&scope=user_profile,user_media&response_type=code&state=' .
-						admin_url( 'admin.php?page=stratum-settings#stratum_api' )
+						admin_url( 'admin.php' )
 					),
 					'type' => 'text',
 				],
@@ -493,6 +522,8 @@ class Admin_Page {
 				'https://api.getmotopress.com/refresh_instagram_token.php?access_token='.$instagram_access_token.'&state=' .
 				admin_url( 'admin.php?page=stratum-settings#stratum_api' )
 			);
+
+			stratum()->get_token_manager()->schedule_token_refresh_event();
 		}
 
         return $settings_fields;

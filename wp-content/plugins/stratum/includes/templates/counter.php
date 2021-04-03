@@ -112,7 +112,7 @@ $out .= "<div ".$widget_class.">";
 				$out .= "<p class='stratum-counter__suffix'>".esc_html( $suffix )."</p>";
 			}
 		} elseif ( $type == 'js' ) {
-			$out .= "<# if ( settings.prefix != '' ) { #>";
+			$out .= "<# if ( settings.suffix != '' ) { #>";
 				$out .= "<p class='stratum-counter__suffix'>".esc_html( $suffix )."</p>";
 			$out .= "<# } #>";
 		}

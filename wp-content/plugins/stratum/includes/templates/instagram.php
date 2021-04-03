@@ -51,14 +51,28 @@ if ( false === $instagram_media ) {
 
 		//JSON valid
 		if ( json_last_error() === JSON_ERROR_NONE ) {
-			if ( $instagram_media->data) {
-				//Cache response
-				set_transient( 'stratum_instagram_response_data', $instagram_media, 30 * MINUTE_IN_SECONDS );
+			if ( isset( $instagram_media->error ) ) {
+				echo '<p>' .
+					wp_kses(
+						sprintf(
+							__( 'The access token could not be decrypted. Your access token is currently invalid. <a href="%s" target="_blank">Please re-authorize your Instagram account</a>.', 'stratum' ),
+							admin_url( 'admin.php?page=stratum-settings#stratum_api' )
+						),
+						array( 'a' => array( 'href' => array(), 'target' => array() ) )
+					)
+				. '</p>';
+
+				return;
 			} else {
-				if ( current_user_can( 'manage_options' ) ) {
-					return '<p>' . $instagram_media->meta->error_message . '</p>';
+				if ( $instagram_media->data ) {
+					//Cache response
+					set_transient( 'stratum_instagram_response_data', $instagram_media, 30 * MINUTE_IN_SECONDS );
 				} else {
-					return '';
+					if ( current_user_can( 'manage_options' ) ) {
+						return '<p>' . $instagram_media->meta->error_message . '</p>';
+					} else {
+						return '';
+					}
 				}
 			}
 		} else {
@@ -72,7 +86,6 @@ $widget_name = 'stratum-instagram';
 $class = $block_name = 'stratum-instagram';
 
 $wrapper_class = 'stratum-instagram__wrapper masonry-grid'.($animate_on_scroll == 'yes' ? (' '.esc_attr($animation_effects).' animate_on_scroll') : '');
-$wrapper_class .= " has-" . $columns . "-columns";
 
 $out = "";
 
